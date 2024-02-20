@@ -1,9 +1,15 @@
+
 plugins {
     id("com.android.application")
+    id("kotlin-android")
     id("kotlin-kapt")
     id("org.jetbrains.kotlin.android")
+    id("dagger.hilt.android.plugin")
 }
 
+kapt {
+    correctErrorTypes = true
+}
 android {
     namespace = "com.alixa.cryptoapp"
     compileSdk = 34
@@ -68,12 +74,12 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
-    //Dagger - Hilt
-    implementation("com.google.dagger:hilt-android:2.48.1")
-    kapt("com.google.dagger:hilt-android-compiler:2.46.1")
-    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
-    kapt("androidx.hilt:hilt-compiler:1.1.0")
+
+    implementation("com.google.dagger:hilt-android:2.50")
     implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
+    kapt("androidx.hilt:hilt-compiler:1.1.0")
+    kapt("com.google.dagger:hilt-android-compiler:2.46.1")
+    annotationProcessor("com.google.dagger:hilt-compiler:2.50")
 
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
